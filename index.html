@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Spoilage Predictor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.8.0/dist/JsBarcode.all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <script src='parameters.js'></script>
+    <script src='SimulationRequestEvent.js'></script>
+    <script src='SimulationResultEvent.js'></script>
+    <script src='generateSensorEvent.js'></script>
+    
+    <!--script src='scriptCSV.js'></script-->    
+
+    <script src='script.js'></script>
+    <style>
+        .spinner {
+          border: 16px solid #f3f3f3;
+          border-top: 16px solid #3498db;
+          border-radius: 50%;
+          width: 120px;
+          height: 120px;
+          animation: spin 2s linear infinite;
+        }
+      
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      </style>
+</head>
+<body>
+    <div class="container text-center"><h2>Product Spoilage Predictor</h2></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <button class="btn btn-primary" id="generate-barcode">Scan Barcode</button>
+                <div id="barcode-container">
+                    <svg id="barcode-1" ></svg>
+                    <svg id="barcode-2" ></svg>  
+                    <svg id="barcode-3" ></svg>  
+                    <svg id="barcode-4" ></svg>  
+                    <svg id="barcode-5" ></svg>  
+                    <svg id="barcode-6" ></svg>  
+                    <svg id="barcode-7" ></svg>  
+                    <svg id="barcode-8" ></svg> 
+                    <svg id="barcode-9" ></svg>
+                    <svg id="barcode-10" ></svg>
+                    <svg id="barcode-11" ></svg>   
+                </div>    
+            </div>
+            <div class="col-lg-8">
+            
+                <form id="productForm">
+                    <div class="form-group">
+                        <label for="barcodeInput">Product Barcode:</label>
+                        <input type="text" class="form-control" id="barcodeInput" >
+                    </div>
+
+                    <!--div class="form-group">
+                        <label for="temperature">Temperature Measurement:</label>
+                        <input type="real" class="form-control" id="temperature" required>
+                    </div-->
+                    <div class="form-group">
+                        <label for="csvFileInput">Temperature Logger Data:</label>
+                        <input type="file" class="form-control" id="csvFileInput">
+                        <!--button onclick="parseCSV()">Parse CSV</button-->
+                        <!--script src="scriptCSV.js"></script-->
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div id="spinnerContainer"></div>
+
+                    
+                </form>
+                <h3 id="result"></h3>
+                <canvas id="chart" width="400" height="200"></canvas>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    
+</body>
+</html>
+
+
+
