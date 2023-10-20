@@ -64,26 +64,3 @@ function generateSimulationResult(predictionResult, modelId, gtin){
     }
     return JSON.stringify(simulationResultEvent);
 }
-function getResultData(eventList){
-    resultData = []
-    if(eventList.length < 1){
-      return resultData;
-    }
-    // Sort the eventList by eventTime in ascending order
-      eventList.sort((b, a) => new Date(b.eventTime) - new Date(a.eventTime));
-    // Get the most recent event (the first one in the sorted list)
-      let event = eventList[0];
-      eventList.forEach(event => {
-        let parameters = event["fskparam:parameters"]
-        parameters.forEach(p =>{
-            if(p["fskparam:metadata"]["fskparam:classification"] === "OUTPUT"){
-                resultData.push(p["fskparam:data"]);
-            }
-        });
-      });
-    
-      
-      
-    
-    return resultData;
-  }
